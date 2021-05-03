@@ -23,4 +23,4 @@ Files:
 • Platine-Case.png ........................................ On-Off Board-picture
 • Cable-Holder_TPU.stl .................................... TPU-Reinforced (3D-printed) Cable-Junction between Cable-End and proposed Case
 • Bild1.png - Bild6.png ................................... Fotos of first approach (later modified)
-
+• Read.me ................................................. Text-file with descriptions for github
