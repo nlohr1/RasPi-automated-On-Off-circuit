@@ -25,8 +25,8 @@ beeing always on, but switched off by the circuit.
 
 If the Main-Power (f.ex. 230VAC or 24VDC for a 3D-Printer) is shut-off (f.ex. with a Remote-Switch), this Circuit gets the missing
 Power-Voltage through an Optocoupler, which signals the Raspi (on GPIO21) to run the above mentionned shutdown-script before shutting-off
-himself and after a waiting-time of about 30 seconds switches also the 5V-Power-line off, so the 5V-Power-line is burdened no longer,
-so mostly consuming only a few mA (=mW) waiting to the RasPi be powered on again...
+himself and after a waiting-time of about 30 seconds the circuit switches also the 5V-Power-line off, so this Power-line is no longer burdened,
+consuming only a few mA (StandBy mode), waiting to the RasPi beeing powered-on again...
 
 Design: Mains-Power (~230VAC) detected through an Optocoupler!
 -------
