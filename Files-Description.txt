@@ -1,0 +1,26 @@
+Files:
+------
+• Adding a Shutdown Button to the Raspberry Pi B+.txt ..... Instruction including the Python-Script and the installation on the RasPi
+• Raspi-On-Off_PMos_SMD_nl.sch ............................ Eagle schematic-file of the Board
+• Raspi-On-Off_PMos_SMD_nl.brd ............................ Eagle board-file of the Board
+• Gerber-Files.zip ........................................ Gerber files exported to send to a PCB-Manufacturer
+• Raspi-On-Off_PMos_SMD_nl.xln ............................ Excellon file for holes (SMD/TH Board), (SMD = Small-Mounted-Device / TH = ThroughHole)
+• Raspi-On-Off_PMos_SMD_nl.dri ............................ Excellon description file (not really needed here)
+• Raspi-On-Off_PMos_SMD_nl_Holes.nc ....................... Tanslated Excellon-holes into GRBL-Format (= ".gcode") to drill the holes first
+• Raspi-On-Off_PMos_SMD_nl.png ............................ Schematic and Board on a .png-file (foreseeing the operating plan)
+• Raspi-On-Off_PMos_SMD_nl_TonerDirect.pdf ................ Print-Layout for board-print with Toner-Direct-Method
+• Raspi-On-Off_PMos_SMD_nl_BOM.htm ........................ BOM: Bill of Materials needed...
+• Raspi-On-Off_Case_PETG.stl .............................. stl-file for a proposed Case
+• Raspi-On-Off_Lid_PETG.stl ............................... stl-file for the proposed Case-Lid
+• Raspi-On-Off_Case.png ................................... translucent preview of the proposed Case
+• Raspi-On-Off_Clip_PETG.stl .............................. stl-file for the Clamp-Part of the 230VAC-Cable
+• Raspi-On-Off_Clip_FR4.pdf ............................... Print-File to reinforce the above printed Clamp with 1,5mm FR4-Material
+• RasPi-Bplus_GPIO-Pins.png ............................... Schematic for the connection of the Raspi B+ GPIO-Pins
+• RasPi On-Off Wiring.sch ................................. General overview-plan of operating and connections (Eagle-schematic)
+• RasPi On-Off Wiring.png ................................. same " " " " as .png-file
+• Power-Relais_30A-5V_SLA-05VDC.png ....................... A proposed *Power-Relais* to connect between Printer and a (WLAN) On-Off-Switch,
+                                                            because most WLAN-Switches can only handle real loads with ~ < 1 Amp (230VAC)!
+• Platine-Case.png ........................................ On-Off Board-picture
+• Cable-Holder_TPU.stl .................................... TPU-Reinforced (3D-printed) Cable-Junction between Cable-End and proposed Case
+• Bild1.png - Bild6.png ................................... Fotos of first approach (later modified)
+

@@ -1,0 +1,85 @@
+Writing the corresponding Python Script to activate the shutdown through Input-Pin 21
+-------------------------------------------------------------------------------------
+The original Instruction and Python-Scripts (a bit modified here) on:
+https://www.element14.com/community/docs/DOC-78055/l/adding-a-shutdown-button-to-the-raspberry-pi-b/
+
+Instuctions to setup a Raspbian OS exists on many places, one of them:
+https://www.raspberrypi.org/help/quick-start-guide/
+
+
+This description here is only to copy and setup the Python-Script on the Raspberry-Pi:
+
+We create a folder within the /home/pi directory called ‘scripts’ (if it doesn't exist yet) and
+an empty file therein called ‘shutdown.py’:
+
+
+  mkdir scripts
+  cd scripts
+  nano shutdown.py
+
+
+Copy following text (between ~~~lines) to the clipboard and paste it with [Shift]+[Insert]:
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#!/usr/bin/python
+# Simple script for shutting down the raspberry Pi at the press of a button.
+
+import RPi.GPIO as GPIO
+import time
+import os
+
+# Use the Broadcom SOC Pin numbers
+# Setup the Pin with Internal pullups enabled and PIN in reading mode.
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(21, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+
+# Our function on what to do when the button is pressed
+def Shutdown(channel):
+  os.system("sudo shutdown -h now")
+
+# Add our function to execute when the button pressed event happens:
+# use GPIO-21 at the very end of the connector, right beside the GND. Harder to mess that up:
+GPIO.add_event_detect(21, GPIO.FALLING, callback = Shutdown, bouncetime = 2000)
+
+# Now wait:
+while 1:
+  time.sleep(1)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Save the file by pressing CTRL+X and then Y, Enter
+Then you need to make the file executable:
+
+
+  sudo chmod 644 shutdown.py
+
+
+Trying to shutdown the system this scripts needs to be run as root. To test its working, enter the following command:
+
+
+  sudo python shutdown.py
+
+
+If at this point you press the button (this connected between BCM Pin-21 = Physical Pin-40 and GND = Physical Pin-39),
+the RPi should shutdown. If it doesn’t then you need to check the script as well as the connections on the Pi.
+No Pull up resistances are needed since we enable the internal pull-ups on the Pi itself (within the script above).
+Attached file: ‘RasPi-B+_GPIO-Pins.png’.
+
+
+Now make this python script run automatically every time the RPi starts, entering the following command:
+
+
+  sudo nano /etc/rc.local
+
+
+This file is what gets executed everytime your RPi boots up. We need to add a start command before the last line
+which closes the if loop. Therefore, add the following line before the "exit 0" line at the end of the file.
+
+
+# -----------------------------------------
+sudo python /home/pi/scripts/shutdown.py &
+# -----------------------------------------
+
+
+The & at the end of this command tells the Pi to run the process in the background.
+If you omit it, then your login prompt probably will not appear.
