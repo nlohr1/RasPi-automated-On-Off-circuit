@@ -7,7 +7,7 @@ Hochschule München, FK 04, Prof. Jürgen Plate, http://www.netzmafia.de/skripte
 This automated circuit acts in combination with a Python-Script (on the RasPi), shutting-off safely this Raspberry-Pi Single-Board-Computer.
 This shut-off can be done through a remote Switch (activated per WLAN f.ex. per App, Browser or with a Python-Script on another System),
 per Hardware-Button-Switch on the circuit or via an external 5V-Signal. It provides also the possibility to switch a concatenated
-Power-Relay on/off (f.ex. for a 3D-Printer) and has a 2nd Button-Switch to switch-on the 5V-Power for the RasPi, this naturally
+Power-Relay on/off (f.ex. for a 3D-Printer) and has a 2nd Button-Switch to switch-On the 5V-Power for the RasPi, this naturally
 depending on present main-voltages...
 
 Preliminary remarks:  
