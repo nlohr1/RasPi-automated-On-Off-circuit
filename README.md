@@ -17,12 +17,13 @@ The Raspberry Pi alas has no buit-in safe shutdown-program and normally will be 
 This abrupt "Power-Off" mostly causes no problems. But if just at this "shut-off"-moment the system is writing to the file-system
 (f.ex. to the SD-Card), this may result in this file beeing unreadable or worse in a corrupted boot-sector - and probaby next time
 the system can't boot anymore – the SD-Card (the booting-system) has to be set-up again... almost much work, which can be avoided
-with an additional safe Shutdwon-Circuit (Hardware) or a simple manual Button...
+with an additional Python-Script + a safe Shutdwon-Circuit (Hardware like this) or a simple manual Button activating the Script.
+The advantage of this Circuit is it shuts the whole System-Power off, remaining "On" only a simple 5V/2A USB-Power-Supply – in StandBy-Mode.
 
-This Shutdwon-Box can prevent such (worst) cases automatically. It activates a Shutdown-Routine, running on the RasPi before switching
-his 5V-Power-Off. This Routine (a Python-Script) can be found on many places on the internet, but mostly it isn't activated automatically
+This Shutdwon-Box can prevent (worst) cases, acting automatically. It activates a Shutdown-Routine Script, running on the RasPi before switching
+his 5V-Power-Off. This Routine (metinoned Python-Script) can be found on many places on the internet, but mostly it isn't activated automatically
 but with a manual "Shut-down" Button. To automate this process the RasPi here gets his own 5V-Supply with a small 5V(USB)-Power-Supply
-beeing always on, but switched off by the circuit.
+**beeing always on**, but shorted off by the circuit, f.ex with a remote Switch or through its own Shutdown-Button.
 
 If the Main-Power (f.ex. 230VAC or 24VDC for a 3D-Printer) is shut-off (f.ex. with a Remote-Switch), this Circuit gets the missing
 Power-Voltage through an Optocoupler, which signals the Raspi (on GPIO21) to run the above mentionned shutdown-script before shutting-off
