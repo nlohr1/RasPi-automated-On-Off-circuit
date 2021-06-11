@@ -73,4 +73,4 @@ a Reset Buttons, nevertheless on most boards we find a prepared via named "Run",
 a Reset-Pin. Connecting this pin to "GND" (=mostly located beside "Run") through a Push-Button the Raspi comes up again and so the
 whole periphery as Printer, etc.  
 
-----------------------------------------------------------eof--------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
