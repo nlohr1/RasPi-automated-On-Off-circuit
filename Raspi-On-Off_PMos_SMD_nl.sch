@@ -15065,13 +15065,14 @@ Source: http://eshop.phoenixcontact.com .. 1729128.pdf</description>
 <part name="P+3" library="supply1" deviceset="+5V" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="R0805" value="270R"/>
-<part name="T3" library="transistor-small-signal" deviceset="BSS123" device="23" value="BSS123"/>
+<part name="T3" library="transistor-small-signal" deviceset="BSS123" device="23" value="IRLML2803"/>
 <part name="LED2" library="led" deviceset="LED" device="3MM" value="red"/>
 <part name="T5" library="transistor-small-signal" deviceset="BSS123" device="23" value="IRLML0030"/>
 <part name="R11" library="rcl" deviceset="R-EU_" device="R0805" value="560R"/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="JP6" library="con-lstc" deviceset="MA02-1" device="1" value="Relais"/>
 <part name="D3" library="diode2" deviceset="MBR0520LT" device="" value="SS12"/>
+<part name="D4" library="diode2" deviceset="MBR0520LT" device="" value="SS12"/>
 </parts>
 <sheets>
 <sheet>
@@ -15335,6 +15336,10 @@ present ?</text>
 <attribute name="NAME" x="57.15" y="55.0926" size="1.778" layer="95"/>
 <attribute name="VALUE" x="55.88" y="49.7586" size="1.778" layer="96"/>
 </instance>
+<instance part="D4" gate="G$1" x="138.43" y="87.63" smashed="yes" rot="R270">
+<attribute name="NAME" x="136.0424" y="85.725" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="142.3289" y="84.455" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -15500,7 +15505,6 @@ present ?</text>
 <junction x="157.48" y="78.74"/>
 <pinref part="T4" gate="G$1" pin="S"/>
 <pinref part="T4" gate="G$1" pin="S@1"/>
-<junction x="162.56" y="78.74"/>
 <pinref part="T4" gate="G$1" pin="S@2"/>
 <pinref part="IC1" gate="P" pin="VCC"/>
 <wire x1="138.43" y1="53.34" x2="138.43" y2="78.74" width="0.1524" layer="91"/>
@@ -15510,6 +15514,8 @@ present ?</text>
 <junction x="60.96" y="45.72"/>
 <pinref part="D3" gate="G$1" pin="C"/>
 <junction x="60.96" y="53.34"/>
+<pinref part="D4" gate="G$1" pin="C"/>
+<wire x1="138.43" y1="78.74" x2="138.43" y2="85.09" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="OK1" gate="G$1" pin="COL"/>
@@ -15593,7 +15599,6 @@ present ?</text>
 <wire x1="180.34" y1="73.66" x2="187.96" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="T4" gate="G$1" pin="D"/>
 <pinref part="T4" gate="G$1" pin="D@1"/>
-<junction x="172.72" y="78.74"/>
 <pinref part="T4" gate="G$1" pin="D@2"/>
 <pinref part="T4" gate="G$1" pin="D@3"/>
 </segment>
@@ -15622,8 +15627,9 @@ present ?</text>
 <pinref part="D2" gate="G$1" pin="A"/>
 <wire x1="124.46" y1="71.12" x2="124.46" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="G$1" pin="1"/>
-<wire x1="124.46" y1="96.52" x2="180.34" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="96.52" x2="138.43" y2="96.52" width="0.1524" layer="91"/>
 <junction x="124.46" y="96.52"/>
+<wire x1="138.43" y1="96.52" x2="180.34" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="96.52" x2="124.46" y2="116.84" width="0.1524" layer="91"/>
 <junction x="124.46" y="96.52"/>
 <wire x1="116.84" y1="116.84" x2="124.46" y2="116.84" width="0.1524" layer="91"/>
@@ -15638,6 +15644,9 @@ present ?</text>
 <wire x1="99.06" y1="93.98" x2="99.06" y2="116.84" width="0.1524" layer="91"/>
 <junction x="99.06" y="116.84"/>
 <wire x1="81.28" y1="116.84" x2="99.06" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="D4" gate="G$1" pin="A"/>
+<wire x1="138.43" y1="90.17" x2="138.43" y2="96.52" width="0.1524" layer="91"/>
+<junction x="138.43" y="96.52"/>
 </segment>
 </net>
 <net name="N$11" class="0">
