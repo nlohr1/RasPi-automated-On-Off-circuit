@@ -2,7 +2,6 @@
 Automated safe shutdown of a Raspberry Pi single-board computer.
 
 ![RasPi-automated-On-Off-circuit](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_nl.png)
-
 This automated circuit acts in combination with a Python-Script (on the RasPi), shutting-off safely this Raspberry-Pi Single-Board-Computer.
 This shut-off can be done through a remote Switch (activated per WLAN f.ex. per App, Browser or with a Python-Script on another System),
 per Hardware-Button-Switch on the circuit or via an external 5V-Signal. It provides also the possibility to switch a concatenated
@@ -60,3 +59,10 @@ with a IRF8736 (18A/5mO) or a IRF8788 (24A/3mO), having the same package as the 
 
 So this automated "On-Off-Switch" can be used also for the Raspberry-Pi 4, consuming 4 Amps or more, this Amperage depending also
 on additional connected periphery, as screens, harddrives, coolers, etc, which in sum may consume a lot more than 4A...
+
+---------------------------------------------------------------------------------------------------------------------
+Add-On: Reset-Button
+--------------------
+If in any case the RasPi went into its Sleep-Modus, we need a Hardware Reset-Button to wake it up. Since Pi's boards as yet misses
+a Hardware Reset Button, nevertheless on most boards we can find a prepared via named "Run", whitch is the Pin we are looking for
+to use as Reset-Pin. Connecting this pin to "GND" (=mostly located beside "Run") through a Push-Button the Raspi comes up again.
