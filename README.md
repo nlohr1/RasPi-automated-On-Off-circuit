@@ -54,7 +54,7 @@ both Mosfets T3 and T4 (insted of a Relay-Switch as posted in the original versi
 The difference here to a Relay-Switch is a significant lower "hold"-current while Power-"On": with these days really Low-Resistance
 (P-)Mosfets, possible losses or heatings are mostly negligible.  
 But if more Switching-Power is necessary (for greater loads), the P-Mosfet IRF7416 (10A/20mOhm) may be changed with a stronger type, f.ex.  
-with a IRF8736 (18A/5mO) or a IRF8788 (24A/3mO).
+with a IRF8736 (18A/5mO) or a IRF8788 (24A/3mO), having the same package as the IRF7416, so changing without any layout-modification.
 
 So this automated "On-Off-Switch" can be used also for the Raspberry-Pi 4, consuming 4 Amps or more, this Amperage depending also
 on additional connected periphery, as screens, harddrives, coolers, etc, which in sum may consume a lot more than 4A...
