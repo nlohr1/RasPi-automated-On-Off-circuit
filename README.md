@@ -4,6 +4,13 @@ Automated safe shutdown of a Raspberry Pi single-board computer.
 This board is a modified copy of the work created from  
 Hochschule München, FK 04, Prof. Jürgen Plate, http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-OnOff/index.html
 
+
+
+      
+          
+      
+
+  
 This automated circuit acts in combination with a Python-Script (on the RasPi), shutting-off safely this Raspberry-Pi Single-Board-Computer.
 This shut-off can be done through a remote Switch (activated per WLAN f.ex. per App, Browser or with a Python-Script on another System),
 per Hardware-Button-Switch on the circuit or via an external 5V-Signal. It provides also the possibility to switch a concatenated
