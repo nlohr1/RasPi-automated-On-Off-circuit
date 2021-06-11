@@ -44,8 +44,8 @@ After the RasPi has run the script and is savely "down" (but yet not "off"), hav
 his 5V-Power-Supply may also be switched off. (Note: the RasPi blinks 10 times after the script is done, before beeing "down").
 
 But: How does the On-Off-Box know when this Python-Script has finished and the inbuilt-30s-timer can begin to "count-down"?
-=> The script searches for a Signal on the TX-line: Beeing "online", both Series-Lines (TX / RX) are mostly active, so this signals  
-can be caught through the named TX-line-Pin on RasPi's Pin-header(output on BCM Pin 14 = GPIO TxD = Physical-Pin 8), which  
+=> The script searches for a Signal on the TX-line: Beeing "online", both Series-Lines (TX / RX) are mostly active, so this signals
+can be caught through the named TX-line-Pin on RasPi's Pin-header(output on BCM Pin 14 = GPIO TxD = Physical-Pin 8), which 
 -beeing "On"- loads the Timer-Capacitor in our On-Off-Box permanently to "full-status" (+5V).  
 After the RasPi went savely "down" (at the end of the Shut-Down-Script), the TX-line *isn't firing anymore*, so the 10uF Timer-Capacitor (C1)
 begins to unload through his parallel resistance (R4: 3,9MOhm). On about ~1/3 of Voltage (after ~30s) the following Schmitt-Trigger activates
