@@ -61,10 +61,15 @@ with a IRF8736 (18A/5mO) or a IRF8788 (24A/3mO), having the same package as the 
 So this automated "On-Off-Switch" can be used also for the Raspberry-Pi 4, consuming 4 Amps or more, this Amperage depending also
 on additional connected periphery, as screens, harddrives, coolers, etc, which in sum may consume a lot more than 4A...
 
+Wiring of the System:
+---------------------
+![Wiring-Circuit](https://github.com/nlohr1/RasPi-automated-On-Off-circuit/blob/main/RasPi-On-Off-Wiring.png)
+
 ---------------------------------------------------------------------------------------------------------------------
 Add-On: Reset-Button for the Pi
 -------------------------------
 If in any case the RasPi went into its Sleep-Modus, we need a (Hardware) Reset-Button to wake it up. Since Pi's boards as yet misses
 a Reset Buttons, nevertheless on most boards we find a prepared via named "Run", whitch is the Pin we are looking for to use as
 a Reset-Pin. Connecting this pin to "GND" (=mostly located beside "Run") through a Push-Button the Raspi comes up again and so the
-whole periphery... (Printer, etc.)
+whole periphery as Printer, etc.
+----------------------------------------------------------eof--------------------------------------------------------
