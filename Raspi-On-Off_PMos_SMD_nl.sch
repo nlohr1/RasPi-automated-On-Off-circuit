@@ -15065,7 +15065,7 @@ Source: http://eshop.phoenixcontact.com .. 1729128.pdf</description>
 <part name="P+3" library="supply1" deviceset="+5V" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="R0805" value="270R"/>
-<part name="T3" library="transistor-small-signal" deviceset="BSS123" device="23" value="BSS123"/>
+<part name="T3" library="transistor-small-signal" deviceset="BSS123" device="23" value="IRLML2803"/>
 <part name="LED2" library="led" deviceset="LED" device="3MM" value="red"/>
 <part name="T5" library="transistor-small-signal" deviceset="BSS123" device="23" value="IRLML0030"/>
 <part name="R11" library="rcl" deviceset="R-EU_" device="R0805" value="560R"/>
