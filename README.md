@@ -11,7 +11,8 @@ depending on present main-voltages...
 This board is a modified copy of the work created from  
 Hochschule München, FK 04, Prof. Jürgen Plate, http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-OnOff/index.html
 
-Preliminary remarks:  
+Preliminary remarks:
+--------------------
 A Computer booting from a File-System needs to have a built-in **save** shutdown before turning off his (main-)power.
 The Raspberry Pi alas has no buit-in safe shutdown-program and normally will be directly "killed" powering off.  
 This abrupt "Power-Off" mostly causes no problems. But if just at this "shut-off"-moment the system is writing to the file-system
