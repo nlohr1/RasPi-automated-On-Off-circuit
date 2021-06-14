@@ -67,6 +67,7 @@ So this automated "On-Off-Switch" can be used also for the Raspberry-Pi 4, consu
 periphery, as screens, harddrives, coolers, etc, which in sum may consume a lot of current...
 
 ![Raspi-On-Off_PMos_SMD_n_Foto](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_n_Foto.png)
+Board (52 x 28 mm)
 
 Wiring of the System:
 ---------------------
