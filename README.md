@@ -17,7 +17,9 @@ Hochschule München, FK 04, Prof. Jürgen Plate, http://www.netzmafia.de/skripte
 common available Remote-Switches can't **switch** safely more than a maximum of about 0,5 Amperes (~100W) - although they mostly are specified for "220V / 16A"
 (= this beeing true only for the **uninterrupted** current...!).
 
-### ⇒ &nbsp; See [Wiring of the System](#wiring-of-the-system) - schematic
+Wiring of the System - schematic:
+---------------------------------
+![Wiring-Circuit](https://github.com/nlohr1/RasPi-automated-On-Off-circuit/blob/main/RasPi-On-Off-Wiring.png)
 
 Preliminary remarks:
 --------------------
@@ -76,10 +78,6 @@ periphery, as screens, harddrives, coolers, etc, which in sum may consume a lot 
 
 **Board with soldered components (52 x 28 mm)**  
 ![Raspi-On-Off_PMos_SMD_n_Foto](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_n_Foto.png)
-
-#Wiring of the System:
----------------------
-![Wiring-Circuit](https://github.com/nlohr1/RasPi-automated-On-Off-circuit/blob/main/RasPi-On-Off-Wiring.png)
 
 ---------------------------------------------------------------------------------------------------------------------
 Add-On: Reset-Button for the Pi
