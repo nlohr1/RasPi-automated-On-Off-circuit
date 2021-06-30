@@ -3,13 +3,21 @@ Automated safe shutdown of a Raspberry Pi single-board computer.
 
 ![RasPi-automated-On-Off-circuit](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_nl.png)
 This automated circuit acts in combination with a Python-Script (on the RasPi), shutting-off safely a Raspberry-Pi Single-Board-Computer.
-This shut-off can be inizialized with a remote-controlled Switch (activated per WLAN), or with a Hardware-Button connecting one of the GPIO-Pins
+Shut-off can be inizialized with a remote-controlled Switch (activated per WLAN), or with a Hardware-Button connecting one of the GPIO-Pins
 of the RasPi to GND (=Ground).  
-It provides also the possibility to switch a concatenated Power-Relay on at startup (f.ex. to start a 3D-Printer) and a 2nd Button to manually
+It provides the possibility to switch a concatenated Power-Relay on at startup (f.ex. to start a 3D-Printer) and a 2nd Button to manually
 switch-on the 5V-Power for the RasPi (this switching "On" also the Power-Relais with concatenated Printer) and hold by the firing TX-line of the RasPi.
 
 This board is a modified copy of the work created from  
 Hochschule München, FK 04, Prof. Jürgen Plate, http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-OnOff/index.html
+
+**Main attributes:**  
+- integrated Schmitt-Trigger between Timing-Capacitor and Main-Switching-Mosfet,  
+- detection of present Mains-Power through an ocptocoupler, activating the main Power-Relais (20A / 230VAC) for the machine/3D-Printer, because most
+common available Remote-Switches can't **switch** safely more than a maximum of about 0,5 Amperes (~100W) - although they mostly are specified for "220V / 16A"
+(= this beeing true only for the **uninterrupted** current...!).
+
+### ⇒ &nbsp; See [Wiring of the System](#wiring-of-the-system) - schematic
 
 Preliminary remarks:
 --------------------
@@ -69,7 +77,7 @@ periphery, as screens, harddrives, coolers, etc, which in sum may consume a lot 
 **Board with soldered components (52 x 28 mm)**  
 ![Raspi-On-Off_PMos_SMD_n_Foto](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_n_Foto.png)
 
-Wiring of the System:
+#Wiring of the System:
 ---------------------
 ![Wiring-Circuit](https://github.com/nlohr1/RasPi-automated-On-Off-circuit/blob/main/RasPi-On-Off-Wiring.png)
 
