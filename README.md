@@ -41,7 +41,7 @@ Shut-down Signal
 If the Main-Power (f.ex. 230VAC or 24VDC for a 3D-Printer) is shut-off (per Main-Switch or Remote-Switch), this Circuit gets the now missing
 Power-Voltage through an Optocoupler, which signals the Raspi (on GPIO21) to run the above mentionned shutdown-script before shutting-off
 himself. After a waiting-time of about 30 seconds the circuit switches also the 5V-Power-line off, so that this Power-line is no longer 
-burdened, consuming only a few mA waiting to the RasPi beeing powered-on again...
+burdened, consuming only a few mA waiting for the RasPi beeing powered-on again...
 
 Design: Mains-Power (~230VAC) on the Optocoupler!
 -------
