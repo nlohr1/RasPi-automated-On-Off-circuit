@@ -21,8 +21,8 @@ Wiring of the System - schematic:
 ---------------------------------
 ![Wiring-Circuit](https://github.com/nlohr1/RasPi-automated-On-Off-circuit/blob/main/RasPi-On-Off-Wiring.png)
 
-Preliminary remarks:
---------------------
+Preliminary remarks
+-------------------
 A Computer booting from a File-System needs to have a built-in **save** shutdown before turning off his (main-)power.
 The Raspberry Pi alas has no buit-in safe shutdown-program nor Shutdown-Button and normally will be directly "killed" powering off.  
 This abrupt "Power-Off" mostly causes no problems. But if just at this "shut-off"-moment the system is writing to the file-system
@@ -53,8 +53,8 @@ with high-voltages!
 beeing possible also after a longer time (!) - you are definitively dead!
 3. You are warned, responsibility of what you are doing with the provided circuit + files here is on to you!
 
-Function:
----------
+Function
+--------
 After the RasPi has run the script and is savely "down" (but yet not "off"), having disconnected (unmounted) his file-system per script,
 his 5V-Power-Supply may also be switched off as above accosted. (Note: the RasPi blinks 10 times after the script is done, before beeing
 in StandBy-Mode).
