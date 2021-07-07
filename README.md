@@ -13,7 +13,7 @@ Hochschule München, FK 04, Prof. Jürgen Plate, http://www.netzmafia.de/skripte
 
 **Main attributes:**  
 - integrated Schmitt-Trigger between Timing-Capacitor and Main-Switching-Mosfet,  
-- detection of present Mains-Power through an ocptocoupler, activating the main Power-Relais (20A / 230VAC) for the machine/3D-Printer, because most
+- detection of present Mains-Power through an optocoupler, activating the main Power-Relais (20A / 230VAC) for the machine/3D-Printer, because most
 common available Remote-Switches can't **switch** safely more than a maximum of about 0,5 Amperes (~100W) - although they mostly are specified for "220V / 16A"
 (= this beeing true only for the **uninterrupted** current...!).
 
