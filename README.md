@@ -1,10 +1,10 @@
 # RasPi-automated-On-Off-circuit
 Automated safe shutdown of a Raspberry Pi single-board computer.
-
-![RasPi-automated-On-Off-circuit](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_nl.png)
+                                  
+![RasPi-automated-On-Off-circuit](https://github.com/nlohr1/RasPi-automated-On-Off-circuit/blob/main/Raspi-On-Off_PMos_SMD_nl.png)
 **Board with soldered components (52 x 28 mm)**  
 
-![Raspi-On-Off_PMos_SMD_n_Foto](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_n_Foto.png)  
+![Raspi-On-Off_PMos_SMD_n_Foto](https://github.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_n_Foto.png)  
 
 This **automated** circuit acts in combination with a Python-Script (on the RasPi), shutting-off safely a Raspberry-Pi Single-Board-Computer.
 Shut-off can be inizialized with a remote-controlled Switch (activated per WLAN) or with a Hardware-Button connecting one of the GPIO-Pins
