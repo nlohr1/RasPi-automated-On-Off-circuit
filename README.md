@@ -2,7 +2,7 @@
 Automated safe shutdown of a Raspberry Pi single-board computer.
 
 ![RasPi-automated-On-Off-circuit](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_nl.png)
-  **Board with soldered components (52 x 28 mm)**  
+**Board with soldered components (52 x 28 mm)**  
 
 ![Raspi-On-Off_PMos_SMD_n_Foto](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_n_Foto.png)  
 
