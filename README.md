@@ -2,11 +2,12 @@
 Automated safe shutdown of a Raspberry Pi single-board computer.
 
 ![RasPi-automated-On-Off-circuit](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_nl.png)
-This automated circuit acts in combination with a Python-Script (on the RasPi), shutting-off safely a Raspberry-Pi Single-Board-Computer.
-Shut-off can be inizialized with a remote-controlled Switch (activated per WLAN), or with a Hardware-Button connecting one of the GPIO-Pins
+This **automated** circuit acts in combination with a Python-Script (on the RasPi), shutting-off safely a Raspberry-Pi Single-Board-Computer.
+Shut-off can be inizialized with a remote-controlled Switch (activated per WLAN) or with a Hardware-Button connecting one of the GPIO-Pins
 of the RasPi to GND (=Ground).  
 It provides the possibility to switch a concatenated Power-Relay on at startup (f.ex. to start a 3D-Printer) and a 2nd Button to manually
-switch-on the 5V-Power for the RasPi (this switching "On" also the Power-Relais with concatenated Printer) and hold by the firing TX-line of the RasPi.
+switch-on the 5V-Power for the RasPi (this switching "On" also the Printer-Power-Relais) and hold by the one of the GPIOs of the RasPi,
+which on startup were switched high and on shutdown low.
 
 This board is a modified copy of the work created from  
 Hochschule München, FK 04, Prof. Jürgen Plate, http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-OnOff/index.html
@@ -25,23 +26,23 @@ Preliminary remarks
 -------------------
 A Computer booting from a File-System needs to have a built-in **save** shutdown before turning off his (main-)power.
 The Raspberry Pi alas has no buit-in safe shutdown-program nor Shutdown-Button and normally will be directly "killed" powering off.  
-This abrupt "Power-Off" mostly causes no problems. But if just at this "shut-off"-moment the system is writing to the file-system
+This abrupt "Power-Off" is default use and mostly causes no problems. But if just at this "shut-off"-moment the system is writing to the file-system
 (f.ex. to the SD-Card), this may result in a (boot-)file beeing unreadable or worse in a corrupted boot-sector - and probaby next time
 the system can't boot anymore – the SD-Card (the booting-system) has to be set-up again... almost much work, which can be avoided
 with an additional Python-Script + a safe Shutdwon-Circuit (Hardware like this) or a simple manual Button activating the Script.
-The advantage of this Circuit is it shuts the whole System-Power off, keeping only the small 5V/2A-(USB)-Power-Supply in StandBy-Mode.
+The advantage of this Circuit is it shuts the whole Power off, keeping only the small 5V/2A-(USB)-Power-Supply in StandBy-Mode.
 
 This Shutdwon-Box acts automatically: On startup it activates a Shutdown-Routine Script on the RasPi, waiting for the Signal (or Button)
 to Power-Off. This Routine (a Python-Script) can be found on many places on the internet, but mostly it isn't activated automatically
 but with a manual "Shut-down" Button. To automate this process the RasPi here gets his own 5V-Supply **beeing always on**, but 
 shorted off inside the circuit, so that the RasPi (yet beeing in StandBy-Mode) now is completely off.
 
-Shut-down Signal
-----------------
-If the Main-Power (f.ex. 230VAC or 24VDC for a 3D-Printer) is shut-off (per Main-Switch or Remote-Switch), this Circuit gets the now missing
-Power-Voltage through an Optocoupler, which signals the Raspi (on GPIO21) to run the above mentionned shutdown-script before shutting-off
-himself. After a waiting-time of about 30 seconds the circuit switches also the 5V-Power-line off, so that this Power-line is no longer 
-burdened, consuming only a few mA waiting for the RasPi beeing powered-on again...
+Shut-down Signal by absence of Main-Power
+-----------------------------------------
+If the Main-Power (f.ex. 230VAC or 24VDC for a 3D-Printer) is shut-off (per Main-Switch or Remote-Switch), this Circuit gets the missing
+Power-Voltage through an Optocoupler, which signals the Raspi to run the above mentionned shutdown-script before shutting-off himself.
+After a waiting-time of about 30 seconds the Circuit switches RasPi's 5V-Power-line off, after that only the small USB-Power-Supply
+consuming a few mA waiting for the RasPi beeing powered-on again...
 
 Design: Mains-Power (~230VAC) on the Optocoupler!
 -------
@@ -55,26 +56,22 @@ beeing possible also after a longer time (!) - you are definitively dead!
 
 Function
 --------
-After the RasPi has run the script and is savely "down" (but yet not "off"), having disconnected (unmounted) his file-system per script,
-his 5V-Power-Supply may also be switched off as above accosted. (Note: the RasPi blinks 10 times after the script is done, before beeing
-in StandBy-Mode).
+On StartUp the Shutdown-Script sets BCM-Pin-18 (WPi GPIO-1) as Output + HIGH to signal our On-Off-Board that the Raspi is up and running.
+This Signal on the Board loads and holds the Timer-Capacitor permanently at "full-status" (+5V) during RasPi's active-time.  
+The Signal from Optocoupler (HIGH) connects to RasPi's BCM-Pin-23 (WPi GPIO-4), this Pin is constantly monitored on background and
+on High activates the Shutdown-script.
+After the RasPi has run the Shutdown script and is savely "down" (= in StandBy-Mode, but yet not "off"), having disconnected (unmounted)
+his file-system (internal Linux-Shutdown-routine), his 5V-Power-Supply may also be switched off as mentionned. (Note: Shutting-Off the
+RasPi blinks 10 times after done, before beeing inactive / in StandBy-Mode).
+After being "down" (at the end of the Shut-Down-Script), Pin-18 is LOW and so the 10uF Timer-Capacitor (C1) begins to unload through
+his parallel resistance (R4: 3,9MOhm). On about ~1/3 of Voltage (after ~30s) the Schmitt-Trigger switches Mosfets T3 and T4 off,
+which cuts the +5V-Power line off. Using here a Power-Mosfet (=T4) insted of a Relay has the advantage of consuming negligible current,
+beeing active as well as in waiting / StandBy-Mode.
+If more Switching-Power is necessary (for greater loads), the P-Mosfet IRF7416 (10A/20mOhm) simply may be changed with a stronger type,
+f.ex. with a IRF8736 (18A/5mO) or a IRF8788 (24A/3mO), having identical packages as the IRF7416, so possible exchange without
+layout-modification.
 
-But: How does the On-Off-Box know when this Python-Script has finished and the inbuilt-30s-timer can begin to "count-down" to shut-off
-the whole system?  
-=> The script searches for a Signal on RasPi's TX-line: Beeing "online", both Series-Lines (TX / RX) are mostly active, so this signals
-can be caught through the named TX (transmission)-line Pin on RasPi's Pin-header (output on BCM Pin 14 = GPIO TxD = Physical-Pin 8), which 
-loads and holds the Timer-Capacitor in our On-Off-Box permanently at "full-status" (+5V).  
-After the RasPi went savely "down" (at the end of the Shut-Down-Script), the TX-line *isn't firing anymore*, so the 10uF Timer-Capacitor (C1)
-begins to unload through his parallel resistance (R4: 3,9MOhm). On about ~1/3 of Voltage (after ~30s) the following Schmitt-Trigger activates
-both Mosfets T3 and T4 (insted of a Relay-Switch as posted in the original version), which cuts the +5V-Power line off.
-
-The difference here to a Relay-Switch is a significant lower "hold"-current while Powered-"On": with these days really Low-Resistance
-(P-)Mosfets, possible losses or heatings are mostly negligible. But if more Switching-Power is necessary (for greater loads), the 
-P-Mosfet IRF7416 (10A/20mOhm) may be changed with a stronger type, f.ex. with a IRF8736 (18A/5mO) or a IRF8788 (24A/3mO), having 
-the same package as the IRF7416, so possible exchange without layout-modification.
-
-So this automated "On-Off-Switch" can be used also for the Raspberry-Pi 4, consuming upto 4 Amps or more, depending on additional connected
-periphery, as screens, harddrives, coolers, etc, which in sum may consume a lot of current...
+This automated "On-Off-Switch" can be used for all Raspberry-Pi versions or PCs, etc., consuming upto 4 Amps (or even more).
 
 **Board with soldered components (52 x 28 mm)**  
 ![Raspi-On-Off_PMos_SMD_n_Foto](https://raw.githubusercontent.com/nlohr1/RasPi-automated-On-Off-circuit/main/Raspi-On-Off_PMos_SMD_n_Foto.png)
@@ -82,7 +79,7 @@ periphery, as screens, harddrives, coolers, etc, which in sum may consume a lot 
 ---------------------------------------------------------------------------------------------------------------------
 Add-On: Reset-Button for the Pi
 -------------------------------
-If in any case the RasPi went into its Sleep-Modus, we need a (Hardware) Reset-Button to wake it up. Since Pi's boards as yet misses
+If in someway the RasPi went into its StandBy-Mode, we need a (Hardware-)Reset-Button to wake it up. Since Pi's boards as yet misses
 Reset Buttons, nevertheless on most boards we find a prepared via named "Run", whitch is the Pin we are looking for to use as Reset-Pin.
 Connecting this pin to "GND" (often located directly beside) – through a Push-Button, the Raspi comes up again and so the
 whole periphery as Printer, etc.  
