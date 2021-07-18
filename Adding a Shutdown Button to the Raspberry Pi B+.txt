@@ -6,10 +6,9 @@ https://www.element14.com/community/docs/DOC-78055/l/adding-a-shutdown-button-to
 Instuctions to setup a Raspbian OS exists on many places, one of them:
 https://www.raspberrypi.org/help/quick-start-guide/
 
-
-This description here is only to copy and setup the Python-Script on the Raspberry-Pi.
-We create a folder within the /home/pi directory called ‘scripts’ (if it doesn't exist yet) and
-an empty file therein called ‘shutdown.py’:
+This description here is only to copy and setup the Python-Script on the Raspberry-Pi.  
+We create a folder within the /home/pi directory called â€˜scriptsâ€™ (if it doesn't exist yet) and
+an empty file therein called â€˜shutdown.pyâ€™:
 
 
 mkdir scripts
@@ -17,32 +16,40 @@ cd scripts
 nano shutdown.py
 
 
-Copy following text to the clipboard and paste it with [Shift]+[Insert]:
+Copy following text to the clipboard and paste it with [Shift]+[Insert]:  
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #!/usr/bin/python
-# Simple script for shutting down the raspberry Pi at the press of a button.
+# Simple script for shutting down the raspberry Pi at the press of a button and/or with
+# the same (input-)line connected to GND per transistor, this activated by absence ("0") of
+# another (external) signal as beeing a 230V-Sensor (optocoupler) or a signal from RasPi,
+# activated from Octoprint as GPIO-line.
 
 import RPi.GPIO as GPIO
 import time
 import os
 
-# Use the Broadcom SOC Pin numbers
-# Setup the Pin with Internal pullups enabled and PIN in reading mode.
+# Use the Broadcom SOC Pin numbers "BCM",
+# Setup the Pins with internal pullups enabled, PIN-23 (BCM) as input in reading mode, and
+# PIN-18 as Output, to use as Signal for the On-Off-Board indicating the Pi is up and running:
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(21, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(18, GPIO.OUT)
+GPIO.output(18, GPIO.HIGH) # set BCM 18 (GPIO 1) as Output and high.
+GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_UP)  # set BCM 23 (GPIO 4) as Input with internal pull-Up.
 
-# Our function on what to do when the button is pressed
+# Our function on *what to do* after the Shutdown-Button is pressed (=connected to GND) - or alternatively
+# in absence of Main-Power, when the Optocoupler sets the line on Input-Pin 23 to GND:
 def Shutdown(channel):
+  GPIO.output(18, GPIO.LOW) # LOW on Output-Pin 18 terminates the constant-charge of our Boards Timing-Capacitor!
   os.system("sudo shutdown -h now")
 
-# Add our function to execute when the button pressed event happens:
-# use GPIO-21 at the very end of the connector, right beside the GND. Harder to mess that up:
-GPIO.add_event_detect(21, GPIO.FALLING, callback = Shutdown, bouncetime = 2000)
+# Sensing "button-pressed?":
+# Add our Shutdown function to execute when the "button pressed" event (on Pin-23) happens:
+GPIO.add_event_detect(23, GPIO.FALLING, callback = Shutdown, bouncetime = 250)
 
 # Now wait:
 while 1:
-  time.sleep(1)
+  time.sleep(100)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -59,9 +66,9 @@ Trying to shutdown the system this scripts needs to be run as root. To test its 
 sudo python shutdown.py
 
 If at this point you press the button (this connected between BCM Pin-21 = Physical Pin-40 and GND = Physical Pin-39),
-the RPi should shutdown. If it doesn’t then you need to check the script as well as the connections on the Pi.
+the RPi should shutdown. If it doesnâ€™t then you need to check the script as well as the connections on the Pi.
 No Pull up resistances are needed since we enable the internal pull-ups on the Pi itself (within the script above).
-Attached file: ‘RasPi-B+_GPIO-Pins.png’.
+Attached file: â€˜RasPi-B+_GPIO-Pins.pngâ€™.
 
 
 Now make this python script run automatically every time the RPi starts, entering the following command:
@@ -81,6 +88,15 @@ sudo python /home/pi/scripts/shutdown.py &
 
 The & at the end of this command tells the Pi to run the process in the background.
 If you omit it, then your login prompt probably will not appear.
+
+=================================================================================================================
+Upgrade GPIO for RasPi-v4: make GPIO compatible to Python-version 3
+--------------------------
+
+cd /tmp
+wget https://project-downloads.drogon.net/wiringpi-latest.deb
+sudo dpkg -i wiringpi-latest.deb
+
 
 -------------------------------------------------------------------------------------
 Hardware Reset-Button
