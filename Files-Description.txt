@@ -12,14 +12,15 @@ Files:
 • Raspi-On-Off_PMos_SMD_nl_TonerDirect.pdf ................ Print-Layout for board-print with Toner-Direct-Method
 • Raspi-On-Off_PMos_SMD_nl_BOM.htm ........................ BOM: Bill of Materials needed...
 • Raspi-On-Off_Case_PETG.stl .............................. A proposed Case for the Board
-• Raspi-On-Off_Lid_PETG.stl ............................... A proposed Case-Lid " " "
-• Raspi-On-Off_Platform.stl ............................... A proposed Case alternative (open platform)
+• Raspi-On-Off_Lid_PETG.stl ............................... A proposed Case-Lid for the Board
+• Raspi-On-Off_Platform.stl ............................... A proposed Case alternative (Platform without Lid)
+• Raspi-On-Off_Platform.png ............................... Picture of this Platform
 • Safety-casket-for-230V.stl .............................. A safety cover to cover / put over the 230VAC area (important for safety)
 • Raspi-On-Off_Case.png ................................... translucent preview of the proposed Case
 • Raspi-On-Off_Clip_PETG.stl .............................. Clamp of the 230VAC-Cable
 • Raspi-On-Off_Clip_FR4.pdf ............................... Print-pattern for 1,5mm FR4-Material to reinforce the above printed Clamp with
 • RasPi-On-Off-Wiring.sch ................................. General overview-plan of operating and connections (Eagle-schematic)
-• RasPi-On-Off-Wiring.png ................................. same " " " " as above
+• RasPi-On-Off-Wiring.png ................................. same " " " " as above as .png picture
 • Power-Relais_30A-5V_SLA-05VDC.png ....................... Proposed *Power-Relais* to connect between Printer and a (WLAN) On-Off-Switch,
                                                             because most WLAN-Switches can only handle real loads with ~ < 1 Amp (230VAC)
 • Platine-Case.png ........................................ On-Off Board-picture
