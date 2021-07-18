@@ -68,7 +68,7 @@ sudo python shutdown.py
 If at this point you press the button (this connected between BCM Pin-21 = Physical Pin-40 and GND = Physical Pin-39),
 the RPi should shutdown. If it doesn’t then you need to check the script as well as the connections on the Pi.
 No Pull up resistances are needed since we enable the internal pull-ups on the Pi itself (within the script above).
-Attached file: ‘RasPi-B+_GPIO-Pins.png’.
+Attached file: ‘RasPi-Bplus_GPIO-Pins-!.png’.
 
 
 Now make this python script run automatically every time the RPi starts, entering the following command:
