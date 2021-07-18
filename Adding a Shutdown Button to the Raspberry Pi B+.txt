@@ -60,7 +60,7 @@ Then you need to make the file executable:
 sudo chmod 755 shutdown.py
 
 
-Trying to shutdown the system this scripts needs to be run as root. To test its working, enter the following command:
+Trying to shutdown the system this script needs to be run as root. To test its working, enter the following command:
 
 
 sudo python shutdown.py
