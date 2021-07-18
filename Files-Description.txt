@@ -21,6 +21,7 @@ Files:
 • Raspi-On-Off_Clip_FR4.pdf ............................... Print-pattern for 1,5mm FR4-Material to reinforce the above printed Clamp with
 • RasPi-On-Off-Wiring.sch ................................. General overview-plan of operating and connections (Eagle-schematic)
 • RasPi-On-Off-Wiring.png ................................. same " " " " as above as .png picture
+• RasPi-Bplus_GPIO-Pins-!.png ............................. Overview for RasPi's (newer) 40-pin GPIO Numbering...
 • Power-Relais_30A-5V_SLA-05VDC.png ....................... Proposed *Power-Relais* to connect between Printer and a (WLAN) On-Off-Switch,
                                                             because most WLAN-Switches can only handle real loads with ~ < 1 Amp (230VAC)
 • Platine-Case.png ........................................ On-Off Board-picture
