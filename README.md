@@ -44,9 +44,9 @@ shorted off inside the circuit, so that the RasPi (yet beeing in StandBy-Mode) n
 Shut-down Signal by absence of Main-Power
 -----------------------------------------
 If the Main-Power (f.ex. 230VAC or 24VDC for a 3D-Printer) is shut-off (per Main-Switch or Remote-Switch), this Circuit gets the missing
-Power-Voltage through an Optocoupler, which signals the Raspi to run the above mentionned shutdown-script before shutting-off himself.
-After a waiting-time of about 30 seconds the Circuit switches RasPi's 5V-Power-line off, after that only the small USB-Power-Supply
-consuming a few mA waiting for the RasPi beeing powered-on again...
+Power through an Optocoupler, which signals the Raspi to run the above mentionned shutdown-script before the Circuit switches the
+5V-Power-line off after a waiting-time of about 30 seconds. After that only the small USB-Power-Supply rests "On", consuming only
+a few mA sensing for presence of Main-Power, and if so, the (USB) 5V-Power-line is switched on again.
 
 Design: Mains-Power (~230VAC) on the Optocoupler!
 -------
@@ -61,27 +61,28 @@ beeing possible also after a longer time (!) - you are definitively dead!
 Function
 --------
 On StartUp the Shutdown-Script sets BCM-Pin-18 (WPi GPIO-1) as Output + HIGH to signal our On-Off-Board that the Raspi is up and running.
-This Signal on the Board loads and holds the Timer-Capacitor permanently at "full-status" (+5V) during RasPi's active-time.  
-The Signal from Optocoupler (HIGH) connects to RasPi's BCM-Pin-23 (WPi GPIO-4), this Pin is constantly monitored on background and
-on High activates the Shutdown-script.
+This Signal on the Board loads and holds the Timer-Capacitor on our Circuit permanently at "full-status" (+5V) during RasPi's active-time.  
+Meanwhile the +Signal from Optocoupler (HIGH) is connected to RasPi's BCM-Pin-23 (WPi GPIO-4) and is constantly monitored on background.
+If LOW it activates the Shutdown-script.
 After the RasPi has run the Shutdown script and is savely "down" (= in StandBy-Mode, but yet not "off"), having disconnected (unmounted)
-his file-system (internal Linux-Shutdown-routine), his 5V-Power-Supply may also be switched off as mentionned. (Note: Shutting-Off the
-RasPi blinks 10 times after done, before beeing inactive / in StandBy-Mode).
-After being "down" (at the end of the Shut-Down-Script), Pin-18 is LOW and so the 10uF Timer-Capacitor (C1) begins to unload through
-his parallel resistance (R4: 3,9MOhm). On about ~1/3 of Voltage (after ~30s) the Schmitt-Trigger switches Mosfets T3 and T4 off,
-which cuts the +5V-Power line off. Using here a Power-Mosfet (=T4) insted of a Relay has the advantage of consuming negligible current,
-beeing active as well as in waiting / StandBy-Mode.
-If more Switching-Power is necessary (for greater loads), the P-Mosfet IRF7416 (10A/20mOhm) simply may be changed with a stronger type,
-f.ex. with a IRF8736 (18A/5mO) or a IRF8788 (24A/3mO), having identical packages as the IRF7416, so possible exchange without
-layout-modification.
+his file-system (shutdown-routine "sudo shutdwon -h now"), his main 5V-Power-Supply may also be switched off as above mentionned. (Note:
+the RasPi blinks 10 times while going down, before beeing inactive / in StandBy-Mode).
+After being "down" (at the end of the Shut-Down-Script), Pin-18 is switched LOW. This LOW-Signal on the Circuit goes through Dual-Mosfet
+T2 to the Timer-Capacitor (C1), which now unloads through his parallel resistance (R4: 3,9MOhm). On about ~1/3 of Voltage (after ~30s)
+the connected Schmitt-Trigger switches Mosfets T3 and T4 off and so the +5V-Power line is cut-off.  
+Using here a Power-Mosfet (=T4) insted of a Relay has the advantage of consuming negligible current, beeing active as well as in waiting
+(StandBy-)Mode.  
+If more Switching-Power is necessary (for greater loads as a small RasPi), the P-Mosfet IRF7416 (10A/20mOhm) simply may be exchanged with
+a stronger type, f.ex. a IRF8736 (18A/5mO) or IRF8788 (24A/3mO), having identical packages as the IRF7416, so possible exchange without 
+layout-modification. (I choosed here the IRF7416 due to good availability, but also other compatible Mosfets may be used as well).
 
-This automated "On-Off-Switch" can be used for all Raspberry-Pi versions or PCs, etc., consuming upto 4 Amps (or even more).  
+This automated "On-Off-Switch" can be used for all Raspberry-Pi versions or also PC-Boxes, consuming upto 4 Amps (or even more) on 5VDC.  
 
 ---------------------------------------------------------------------------------------------------------------------
 Add-On: Reset-Button for the Pi
 -------------------------------
 If in someway the RasPi went into its StandBy-Mode, we need a (Hardware-)Reset-Button to wake it up. Since Pi's boards as yet misses
-Reset Buttons, nevertheless on most boards we find a prepared via named "Run", whitch is the Pin we are looking for to use as Reset-Pin.
+Reset Buttons, nevertheless on most boards we may find a prepared via named "Run", whitch is the Pin we are looking for as Reset-Pin.
 Connecting this pin to "GND" (often located directly beside) – through a Push-Button, the Raspi comes up again and so the
 whole periphery as Printer, etc.  
 
