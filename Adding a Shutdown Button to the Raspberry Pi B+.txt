@@ -90,8 +90,14 @@ The & at the end of this command tells the Pi to run the process in the backgrou
 If you omit it, then your login prompt probably will not appear.
 
 =================================================================================================================
-Upgrade GPIO for RasPi-v4: make GPIO compatible to Python-version 3
---------------------------
+Upgrade for 'GPIO' scripts on Python-v3:  make GPIO scripts compatible to (newer) Python-version 3
+----------------------------------------
+On Raspbian gpio srcipts probably needs update for newer Python-versions. So please read pages at
+http://wiringpi.com/ and check for your gpio version. If f.ex. the command:
+
+gpio readall
+
+fails, you need to upgrade the WiringPi-library (mostly already inbuilt on Raspbian-Systems):
 
 cd /tmp
 wget https://project-downloads.drogon.net/wiringpi-latest.deb
